@@ -1,0 +1,25 @@
+---
+layout: post
+title:  "Mocking Modules with Jest"
+date:   2017-12-06 10:12:00 -0500
+categories: 
+---
+# Problem
+
+a.js calls b.js
+
+Want to mock b.js in different ways for each testpoint.
+
+# Solution
+
+{% highlight javascript %}
+
+jest.mock('./b', () => ({}));
+const a = require('./a');
+// Test a
+
+afterEach(() => {
+    jest.resetModules();
+});
+%{ endhightlight %}
+
